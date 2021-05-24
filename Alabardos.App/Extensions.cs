@@ -1,11 +1,8 @@
-﻿using Alabardos.Abstractions;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
-using System.Text;
 
-namespace Alabardos.App
+namespace HarcosApp
 {
     public static class Extensions
     {

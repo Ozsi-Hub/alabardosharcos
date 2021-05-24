@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alabardos.App", "Alabardos.App\Alabardos.App.csproj", "{B2846A82-B52F-4B3F-878D-3C47790FE3F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarcosApp", "Alabardos.App\HarcosApp.csproj", "{B2846A82-B52F-4B3F-878D-3C47790FE3F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alabardos.Abstractions", "Alabardos.Abstractions\Alabardos.Abstractions.csproj", "{8BC3F20E-9C8B-4062-A200-F99242C240AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarcosApp.Abstractions", "Alabardos.Abstractions\HarcosApp.Abstractions.csproj", "{8BC3F20E-9C8B-4062-A200-F99242C240AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

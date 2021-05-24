@@ -1,7 +1,7 @@
-﻿using Alabardos.Abstractions;
+﻿using HarcosApp.Abstractions;
 using System;
 
-namespace Alabardos.App.Domain
+namespace HarcosApp.Domain
 {
     public abstract class Harcos : IHarcos, IHarcol
     {

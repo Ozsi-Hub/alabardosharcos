@@ -1,6 +1,6 @@
-﻿namespace Alabardos.Abstractions
+﻿namespace HarcosApp.Abstractions
 {
-    public interface IHarcoyFactory
+    public interface IHarcosFactory
     {
         IHarcos Create(string vezeteknev, string keresztnev);
     }

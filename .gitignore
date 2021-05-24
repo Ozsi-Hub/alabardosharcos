@@ -2,8 +2,11 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Alabardos.App/v16
+/*.vs
+/*.obj
+/*.bin
 /Alabardos.Abstractions/obj/Debug
 /Alabardos.App/obj/Debug
 /Alabardos.App/obj
 /Alabardos.Abstractions/obj
+/.vs/HarcosApp/v16

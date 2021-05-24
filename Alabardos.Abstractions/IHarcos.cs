@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Alabardos.Abstractions
+namespace HarcosApp.Abstractions
 {
     public interface IHarcos: IHarcol
     {

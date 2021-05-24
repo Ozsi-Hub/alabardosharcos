@@ -1,9 +1,7 @@
-﻿using Alabardos.Abstractions;
+﻿using HarcosApp.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Alabardos.App.Domain
+namespace HarcosApp.Domain
 {
     public class Alabardos : Harcos, IAlabardos
     {
