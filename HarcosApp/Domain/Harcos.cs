@@ -6,40 +6,42 @@ namespace HarcosApp.Domain
     public abstract class Harcos : IHarcos, IHarcol
     {
         public Guid Id { get; protected set; }
-        public string VezetekNeve { get; protected set; }
-        public string KeresztNeve { get; protected set; }
+        public string VezetekNeve { get; protected set; } = default!;
+        public string KeresztNeve { get; protected set; } = default!;
         public int Allokepesseg { get; protected set; }
 
         public virtual void Tamadas(IHarcos vedekezo)
         {
-            var allokepesseg = Allokepesseg;
             Harc();
+        }
 
-            if (allokepesseg / 4 > Allokepesseg)
+        public void Winner(int originalAllokepesseg)
+        {
+            var life = originalAllokepesseg / 4;
+            if (life > this.Allokepesseg)
             {
-                Allokepesseg = 0;
+                this.Allokepesseg = 0;
             }
         }
-        public void Status(IHarcos tamado, IHarcos vedekezo)
-        {
-            Console.WriteLine($"{GetConsoleOutput(tamado)} megtámadta -> {GetConsoleOutput(vedekezo)}");
-        }
 
-        private string GetConsoleOutput(IHarcos harcos)
+        public string GetResult(HarcosTipus tipus)
         {
-            var tipus = WhoAreYou(harcos);
             var who = tipus.GetDisplayName();
-
-            return $"{who} | {harcos.Id} - {harcos.VezetekNeve} {harcos.KeresztNeve} - {harcos.Allokepesseg}";
+            return $"{who} | {GetStatus()}";
         }
 
-        public virtual void Vedekezes(HarcosTipus harcosTipus)
+        public string GetStatus()
+        {
+            return $"{Id} - {VezetekNeve} {KeresztNeve} - {Allokepesseg}";
+        }
+
+        public virtual void Vedekezes(IHarcos vedekezo)
         {
             Harc();
         }
         protected void Harc()
         {
-            Allokepesseg %= 2;
+            Allokepesseg /= 2;
         }
         public bool IsDeath()
         {
@@ -65,8 +67,11 @@ namespace HarcosApp.Domain
 
         public void Kimarad()
         {
-            var newAllokepesseg = Allokepesseg + 20;
-            Allokepesseg = newAllokepesseg > 100 ? 100 : newAllokepesseg;
+            if (!IsDeath())
+            {
+                var newAllokepesseg = Allokepesseg + 20;
+                Allokepesseg = newAllokepesseg > 100 ? 100 : newAllokepesseg;
+            }
         }
     }
 }

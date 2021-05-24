@@ -15,9 +15,10 @@ namespace HarcosApp.Domain
             base.Tamadas(vedekezo);
         }
 
-        public override void Vedekezes(HarcosTipus harcosTipus)
+        public override void Vedekezes(IHarcos tamado)
         {
-            base.Vedekezes(harcosTipus);
+            var harcosTipus = WhoAreYou(tamado);
+            base.Vedekezes(tamado);
             switch (harcosTipus)
             {
                 case HarcosTipus.Alabardos:

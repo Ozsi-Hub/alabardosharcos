@@ -13,13 +13,15 @@ namespace HarcosApp
             var result = counter % 3;
             switch (result)
             {
-                case 0: return Lovag.Create(vezeteknev, keresztnev);
-                case 1: return Ijjasz.Create(vezeteknev, keresztnev);
-                case 2: return Alabardos.Create(vezeteknev, keresztnev);
+                case 0:
+                    return Lovag.Create(vezeteknev, keresztnev);
+                case 1:
+                    return Ijjasz.Create(vezeteknev, keresztnev);
+                case 2:
+                    return Alabardos.Create(vezeteknev, keresztnev);
                 default:
-                    break;
+                    throw new NotImplementedException();
             }
-            throw new NotImplementedException();
         }
     }
 }
