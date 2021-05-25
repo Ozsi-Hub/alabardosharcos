@@ -5,8 +5,8 @@ namespace HarcosApp.Abstractions
     public interface IHarcos: IHarcol
     {
         Guid Id { get; }
-        string VezetekNeve { get; }
-        string KeresztNeve { get; }
-        int Allokepesseg { get; }
+        string LastName { get; }
+        string FirstName { get; }
+        int Life { get; }
     }
 }

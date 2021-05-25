@@ -7,7 +7,7 @@ namespace HarcosApp.Domain
     {
         public static Lovag Create(string vezetekneve, string keresztneve)
         {
-            return new Lovag { Allokepesseg = 80, Id = Guid.NewGuid(), KeresztNeve = keresztneve, VezetekNeve = vezetekneve };
+            return new Lovag { Life = 80, Id = Guid.NewGuid(), FirstName = keresztneve, LastName = vezetekneve };
         }
 
         public override void Tamadas(IHarcos vedekezo)
@@ -16,7 +16,7 @@ namespace HarcosApp.Domain
             switch (vedekezoTipus)
             {
                 case HarcosTipus.Alabardos:
-                    Allokepesseg = 0;
+                    Life = 0;
                     break;
                 case HarcosTipus.Lovag:
                     break;
@@ -36,15 +36,12 @@ namespace HarcosApp.Domain
                 case HarcosTipus.Alabardos:
                     break;
                 case HarcosTipus.Lovag:
-                    Allokepesseg = 0;
+                    Life = 0;
                     break;
                 case HarcosTipus.Ijjasz:
-
-                    var random = new Random();
-                    var number = random.Next(0, 1000);
-                    if (number % 2 == 0)
+                    if (DateTime.Now.Ticks % 2 == 0)
                     {
-                        Allokepesseg = 0;
+                        Life = 0;
                     }
 
                     break;

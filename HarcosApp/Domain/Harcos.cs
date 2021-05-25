@@ -6,9 +6,9 @@ namespace HarcosApp.Domain
     public abstract class Harcos : IHarcos, IHarcol
     {
         public Guid Id { get; protected set; }
-        public string VezetekNeve { get; protected set; } = default!;
-        public string KeresztNeve { get; protected set; } = default!;
-        public int Allokepesseg { get; protected set; }
+        public string LastName { get; protected set; } = default!;
+        public string FirstName { get; protected set; } = default!;
+        public int Life { get; protected set; }
 
         public virtual void Tamadas(IHarcos vedekezo)
         {
@@ -18,21 +18,21 @@ namespace HarcosApp.Domain
         public void Winner(int originalAllokepesseg)
         {
             var life = originalAllokepesseg / 4;
-            if (life > this.Allokepesseg)
+            if (life > this.Life)
             {
-                this.Allokepesseg = 0;
+                this.Life = 0;
             }
         }
 
         public string GetResult(HarcosTipus tipus)
         {
             var who = tipus.GetDisplayName();
-            return $"{who} | {GetStatus()}";
+            return $"{GetStatus()} | {who}";
         }
 
         public string GetStatus()
         {
-            return $"{Id} - {VezetekNeve} {KeresztNeve} - {Allokepesseg}";
+            return $"{Id} - {LastName} {FirstName} - {Life}";
         }
 
         public virtual void Vedekezes(IHarcos vedekezo)
@@ -41,11 +41,11 @@ namespace HarcosApp.Domain
         }
         protected void Harc()
         {
-            Allokepesseg /= 2;
+            Life /= 2;
         }
         public bool IsDeath()
         {
-            return Allokepesseg == 0;
+            return Life == 0;
         }
 
         public HarcosTipus WhoAreYou(IHarcos harcos)
@@ -69,8 +69,8 @@ namespace HarcosApp.Domain
         {
             if (!IsDeath())
             {
-                var newAllokepesseg = Allokepesseg + 20;
-                Allokepesseg = newAllokepesseg > 100 ? 100 : newAllokepesseg;
+                var newAllokepesseg = Life + 20;
+                Life = newAllokepesseg > 100 ? 100 : newAllokepesseg;
             }
         }
     }

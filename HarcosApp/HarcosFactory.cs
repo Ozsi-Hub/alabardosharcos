@@ -8,9 +8,7 @@ namespace HarcosApp
     {
         public IHarcos Create(string vezeteknev, string keresztnev)
         {
-            var rnd = new Random();
-            var counter = rnd.Next(0, 10000);
-            var result = counter % 3;
+            var result = DateTime.Now.Ticks % 3;
             switch (result)
             {
                 case 0:

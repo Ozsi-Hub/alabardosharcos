@@ -2,6 +2,6 @@
 {
     public interface IHarcosFactory
     {
-        IHarcos Create(string vezeteknev, string keresztnev);
+        IHarcos Create(string lastName, string firstName);
     }
 }

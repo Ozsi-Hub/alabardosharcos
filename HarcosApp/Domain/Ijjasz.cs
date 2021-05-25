@@ -7,7 +7,7 @@ namespace HarcosApp.Domain
     {
         public static Ijjasz Create(string vezetekneve, string keresztneve)
         {
-            return new Ijjasz { Allokepesseg = 100, Id = Guid.NewGuid(), KeresztNeve = keresztneve, VezetekNeve = vezetekneve };
+            return new Ijjasz { Life = 100, Id = Guid.NewGuid(), FirstName = keresztneve, LastName = vezetekneve };
         }
 
         public override void Tamadas(IHarcos vedekezo)
@@ -22,13 +22,13 @@ namespace HarcosApp.Domain
             switch (harcosTipus)
             {
                 case HarcosTipus.Alabardos:
-                    Allokepesseg = 0;
+                    Life = 0;
                     break;
                 case HarcosTipus.Lovag:
-                    Allokepesseg = 0;
+                    Life = 0;
                     break;
                 case HarcosTipus.Ijjasz:
-                    Allokepesseg = 0;
+                    Life = 0;
                     break;
                     throw new NotImplementedException(nameof(harcosTipus));
             }

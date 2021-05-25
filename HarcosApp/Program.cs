@@ -18,7 +18,7 @@ namespace HarcosApp
                 Console.WriteLine("Start!");
                 var game = scope.ServiceProvider.GetRequiredService<ILogic>();
 
-                var vezeteknevek = new List<string>
+                var lastNames = new List<string>
                 {
                     "Fel",
                     "Kelek",
@@ -32,7 +32,7 @@ namespace HarcosApp
                     "Gasly",
                 };
 
-                var keresztnevek = new List<string>
+                var firstNames = new List<string>
                 {
                     "Kelek",
                     "Jenő",
@@ -46,9 +46,7 @@ namespace HarcosApp
                     "Gay",
                 };
 
-
-
-                game.Play(vezeteknevek, keresztnevek);
+                game.Play(lastNames, firstNames);
                 Console.WriteLine($"The End!");
             }
             Console.WriteLine("Feladat vége");

@@ -4,6 +4,6 @@ namespace HarcosApp.Abstractions
 {
     public interface ILogic
     {
-        void Play(IList<string> vezeteknev, IList<string> keresztnev);
+        void Play(IList<string> lastNames, IList<string> firstNames);
     }
 }

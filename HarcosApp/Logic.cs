@@ -13,10 +13,10 @@ namespace HarcosApp
         {
             this.harcosFactory = harcosFactory ?? throw new ArgumentNullException(nameof(harcosFactory));
         }
-        public void Play(IList<string> vezeteknev, IList<string> keresztnev)
+        public void Play(IList<string> lastNames, IList<string> firstNames)
         {
-            Validator(vezeteknev, keresztnev);
-            GenerateData(vezeteknev, keresztnev);
+            Validator(lastNames, firstNames);
+            GenerateData(lastNames, firstNames);
             Play();
             CheckResult();
         }
@@ -27,19 +27,19 @@ namespace HarcosApp
             {
                 var tamado = GetPlayer();
                 var vedekezo = GetPlayer();
-                var tamadoOriginalAllokepessege = tamado.Allokepesseg;
-                var vedekezoOriginalAllokepessege = vedekezo.Allokepesseg;
+                var tamadoOriginalLife = tamado.Life;
+                var vedekezoOriginalLife = vedekezo.Life;
 
                 tamado.Tamadas(vedekezo);
                 vedekezo.Vedekezes(tamado);
 
-                if (tamado.Allokepesseg > vedekezo.Allokepesseg)
+                if (tamado.Life > vedekezo.Life)
                 {
-                    tamado.Winner(tamadoOriginalAllokepessege);
+                    tamado.Winner(tamadoOriginalLife);
                 }
                 else
                 {
-                    vedekezo.Winner(vedekezoOriginalAllokepessege);
+                    vedekezo.Winner(vedekezoOriginalLife);
                 }
 
                 Status(tamado, vedekezo);
@@ -52,7 +52,7 @@ namespace HarcosApp
         }
         private void Status(IHarcos tamado, IHarcos vedekezo)
         {
-            Console.WriteLine($"{tamado.GetResult(tamado.WhoAreYou(tamado))} megtámadta -> {vedekezo.GetResult(vedekezo.WhoAreYou(vedekezo))}");
+            Console.WriteLine($"{tamado.GetResult(tamado.WhoAreYou(tamado))} megtámadta -> {vedekezo.GetResult(vedekezo.WhoAreYou(vedekezo))}-t");
         }
 
         private IHarcos GetPlayer()
@@ -61,7 +61,7 @@ namespace HarcosApp
             int r = rnd.Next(harcosok.Count);
             var player = harcosok[r];
 
-            if (player.Allokepesseg == 0 && harcosok.Where(x => x.Allokepesseg > 0).Count() > 0)
+            if (player.Life == 0 && harcosok.Where(x => x.Life > 0).Count() > 0)
             {
                 return GetPlayer();
             }
@@ -70,13 +70,13 @@ namespace HarcosApp
 
         private void CheckResult()
         {
-            if (harcosok.Exists(x => x.Allokepesseg > 0))
+            if (harcosok.Exists(x => x.Life > 0))
             {
-                var winner = harcosok.First(x => x.Allokepesseg > 0);
+                var winner = harcosok.First(x => x.Life > 0);
                 Console.WriteLine();
                 harcosok.ForEach(x => Console.WriteLine(x.GetStatus()));
                 Console.WriteLine();
-                Console.WriteLine($"{winner.VezetekNeve} {winner.KeresztNeve} nyerte a játékot!");
+                Console.WriteLine($"{winner.LastName} {winner.FirstName} nyerte a játékot!");
             }
             else
             {
@@ -86,22 +86,22 @@ namespace HarcosApp
 
         private bool CheckLife()
         {
-            var res =  harcosok.Exists(x => x.Allokepesseg > 0) && harcosok.Where(x => x.Allokepesseg > 0).Count() > 1;
+            var res =  harcosok.Exists(x => x.Life > 0) && harcosok.Where(x => x.Life > 0).Count() > 1;
             return res;
         }
 
-        private void Validator(IList<string> vezeteknev, IList<string> keresztnev)
+        private void Validator(IList<string> lastNames, IList<string> firstNames)
         {
-            if (vezeteknev.Count != keresztnev.Count)
+            if (lastNames.Count != firstNames.Count)
                 throw new ArgumentOutOfRangeException("Nem egyenlő a két lista elemszáma!");
         }
 
-        private void GenerateData(IList<string> vezeteknev, IList<string> keresztnev)
+        private void GenerateData(IList<string> lastNames, IList<string> firstNames)
         {
-            int x = keresztnev.Count - 1;
-            for (int i = 0; i < vezeteknev.Count; i++)
+            int x = firstNames.Count - 1;
+            for (int i = 0; i < lastNames.Count; i++)
             {
-                harcosok.Add(harcosFactory.Create(vezeteknev[i], keresztnev[x]));
+                harcosok.Add(harcosFactory.Create(lastNames[i], firstNames[x]));
                 x--;
             }
 

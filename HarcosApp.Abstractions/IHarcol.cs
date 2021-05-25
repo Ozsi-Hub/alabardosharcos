@@ -8,6 +8,6 @@
         HarcosTipus WhoAreYou(IHarcos harcos);
         string GetResult(HarcosTipus tipus);
         string GetStatus();
-        void Winner(int originalAllokepesseg);
+        void Winner(int originalLife);
     }
 }

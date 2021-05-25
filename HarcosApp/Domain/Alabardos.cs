@@ -7,7 +7,7 @@ namespace HarcosApp.Domain
     {
         public static Alabardos Create(string vezetekneve, string keresztneve)
         {
-            return new Alabardos { Allokepesseg = 90, Id = Guid.NewGuid(), KeresztNeve = keresztneve, VezetekNeve = vezetekneve };
+            return new Alabardos { Life = 90, Id = Guid.NewGuid(), FirstName = keresztneve, LastName = vezetekneve };
         }
 
         public override void Tamadas(IHarcos vedekezo)
@@ -22,12 +22,12 @@ namespace HarcosApp.Domain
             switch (harcosTipus)
             {
                 case HarcosTipus.Alabardos:
-                    Allokepesseg = 0;
+                    Life = 0;
                     break;
                 case HarcosTipus.Lovag:
                     break;
                 case HarcosTipus.Ijjasz:
-                    this.Allokepesseg = 0;
+                    this.Life = 0;
                     break;
                 throw new NotImplementedException(nameof(harcosTipus));
             }
